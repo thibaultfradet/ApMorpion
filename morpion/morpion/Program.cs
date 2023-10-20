@@ -13,7 +13,7 @@ namespace Morpion
         {
         	
         	//Affichage grille
-        	 Console.Clear();
+        
 			for ( j = 0; j < grille.GetLength(0); j++)
 			{
 				Console.Write("\n|===|===|===|\n");
@@ -77,69 +77,64 @@ namespace Morpion
         // si un joueur à gagner
         public static bool Gagner(int l, int c, int joueur)
         {
+        	
+        	
             //Partie Vertical
            	
-           	
-            //Methode utiliser : chiffre direct 
+            //Methode utiliser : parcours / index
             
-            if (grille[0,0] == joueur && grille[1,0] == joueur && grille[2,0] == joueur)
-            {
-            	Console.Clear();
-            	Console.WriteLine("Win vertical");
-            	return true;
-            }
-            
-            if (grille[0,1] == joueur && grille[1,1] == joueur && grille[2,1] == joueur)
-            	
-            {
-            	Console.Clear();
-            	Console.WriteLine("Win vertical");
-            	return true;
-            }
-            
-            if (grille[0,2] == joueur && grille[1,2] == joueur && grille[2,2] == joueur)
-            {
-            	Console.Clear();
-            	Console.WriteLine("Win vertical");
-            	return true;	
+            //Parcours colonne
+            for (c = 0; c < grille.GetLength(1); c++) {
+           		
+           		//Parcours ligne
+            	for (l = 0; l < grille.GetLength(0); l++) {
+            		
+            		//Si les 3 colonnes sont égales
+            		if (grille[0,l] == joueur && grille[1,l] == joueur && grille[2,l] == joueur)
+            		{
+            			Console.WriteLine("Gagner sur la colonne " + l);
+            			//C'est gagner on retourne true (sortie de fonction)
+            			return true;
+            		}
+            		
+            	}
             }
             
             
             
             //Partie horizontale
             
-             //Methode utiliser : chiffre direct 
+             //Methode utiliser : parcours / index
             
-             if (grille[0,0] == joueur && grille[0,1] == joueur && grille[0,2] == joueur)
-            {
-            	Console.Clear();
-            	Console.WriteLine("Win horizontale");
-            	return true;
+             
+            //Parcours colonne
+            for (c = 0; c < grille.GetLength(1); c++) {
+           		
+           		//Parcours ligne
+            	for (l = 0; l < grille.GetLength(0); l++) {
+            		
+            		//Si les 3 colonnes sont égales
+            		if (grille[c,0] == joueur && grille[c,1] == joueur && grille[c,2] == joueur)
+            		{
+            			Console.WriteLine("Gagner sur la ligne " + c);
+            			//C'est gagner on retourne true (sortie de fonction)
+            			return true;
+            		}
+            		
+            	}
             }
             
-             if (grille[1,0] == joueur && grille[1,1] == joueur && grille[1,2] == joueur)
-            	
-            {
-            	Console.Clear();
-            	Console.WriteLine("Win vertical");
-            	return true;
-            }
-            
-             if (grille[2,0] == joueur && grille[2,1] == joueur && grille[2,2] == joueur)
-            {
-            	Console.Clear();
-            	Console.WriteLine("Win vertical");
-            	return true;	
-            }
-            
-            //Partie diagonale
+             	
+             	
+             
+           //Partie diagonale
             
           //Diagonale gauche vers droite
             //Methode utiliser : parcours (chiffre direct)
            
             if (grille[0,0] == joueur && grille[1,1] == joueur && grille [2,2] == joueur)
             {
-            	Console.WriteLine("Win diagonale");
+            	Console.WriteLine("Gagnant diagonale");
             	return true;
             }
             	
@@ -147,13 +142,16 @@ namespace Morpion
            //Methode utiliser : parcours (chiffre direct)
 			
            if (grille[2,0] == joueur && grille[1,1] == joueur && grille[0,2] == joueur) {
-           		Console.WriteLine("Win diagonale");
+           		Console.WriteLine("Gagnant diagonale");
            		return true;
 			}
 
            
-            
+            //Pas encore sortie de la fonction par aucun return c'est donc que ce n'est pas gagnant on retourne false
             return false;
+        
+            
+            
         }
 
         // Programme principal
