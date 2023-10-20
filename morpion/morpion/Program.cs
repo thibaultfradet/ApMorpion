@@ -20,19 +20,26 @@ namespace Morpion
 				Console.Write("|");
 			  	for (k = 0; k < grille.GetLength(1); k++)	
 			  	{
+					//Cas emplacement grille est disponible
 			    	if (grille[j,k] == 10)
 			  		{
+						//On met trait
 			    		Console.Write(" - ");
 			    		Console.Write("|");
 			  		}
 			  		
+					//Cas endroit remplie par joueur1
 			  		else if (grille[j,k] == 1)
 			  		{
+						//On met un X pour j1
 			  			Console.Write(" X ");
 			  			Console.Write("|");
 			  		}
+					
+					//Sinon endroit remplie par joueur2
 			  		else
 			  		{
+						//On met un O pour j1
 			  			Console.Write(" O ");
 			  			Console.Write("|");
 			  		}
