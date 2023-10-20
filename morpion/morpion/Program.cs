@@ -51,9 +51,9 @@ namespace Morpion
         public static bool AJouer(int j, int k, int joueur)
         {
            //Si les indices sont en dehors de la limite 
-        	if (j < 0 || j >= 3 || k < 0 || k >= 3)
+           if (j < 0 || j >= 3 || k < 0 || k >= 3 )
         	{
-        		Console.WriteLine("Mauvaise positionnement");
+        		
         		//On retourne false ,sortie de fonction
         		return false;
         	}
@@ -190,7 +190,7 @@ namespace Morpion
 							// Peut changer en fonction de comment vous avez fait votre tableau.
 							Console.SetCursorPosition(LigneDébut + 10, ColonneDébut + 10); // Permet de manipuler le curseur dans la fenêtre 
 							c = int.Parse(Console.ReadLine()) - 1;
-
+							
 							
 							//Mise bonne position(booleen retour fonction) a retour de AJouer
 							bonnePosition = AJouer(l,c,joueur);
@@ -208,6 +208,8 @@ namespace Morpion
 						//Test si joueur gagnant début d'iteration
 						if (Gagner(j,k,joueur)==true) {
 							gagner = true;
+							//Clear de la console pour l'annonce du gagnant
+							Console.Clear();
 						}
 
 						
@@ -219,6 +221,8 @@ namespace Morpion
 							
 							//On change de joueur a 2
 							joueur = 2;
+							//Clear de la console pour le prochain tour
+							Console.Clear();
 						}
 						
 						//Cas la jeu a etait fait correctement et joueur est 2
@@ -229,11 +233,22 @@ namespace Morpion
 							
 							//On change de joueur a 1
 							joueur = 1;
+							//Clear de la console pour le prochain tour
+							Console.Clear();
 						}
-					
+						
+						//Cas mauvais positionnement
+						else if (bonnePosition == false)
+						{
+							//Clear de la console pour le prochain tour
+							Console.Clear();
+							//On annonce le mauvais positionnement
+							Console.WriteLine("Mauvais positionnement");
+						}
 						
 						
 					};
+					
 					 // Fin de la partie
             	//Cas égalité car la boucle c'est arreter et gagner est toujours a false
             	if (gagner == false)
@@ -246,7 +261,7 @@ namespace Morpion
            		 else
            	 	{
             		//Annonce du gagnant
-            		Console.WriteLine("Felicitations le gagnant est : "+ joueur);
+            		Console.WriteLine("Felicitations le gagnant est : joueur"+ joueur);
            		}
 					
 					
