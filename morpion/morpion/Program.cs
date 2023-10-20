@@ -16,7 +16,7 @@ namespace Morpion
         	 Console.Clear();
 			for ( j = 0; j < grille.GetLength(0); j++)
 			{
-				Console.Write("\n|====|====|====|====|\n");
+				Console.Write("\n|===|===|===|\n");
 				Console.Write("|");
 			  	for (k = 0; k < grille.GetLength(1); k++)	
 			  	{
@@ -38,7 +38,7 @@ namespace Morpion
 			  		}
 			    }
 			}
-			Console.Write("\n|====|====|====|====|");
+			Console.Write("\n|===|===|===|");
 			Console.WriteLine("\n");
         }
 
@@ -207,6 +207,12 @@ namespace Morpion
 						}
 						
 						
+						//Test si joueur gagnant début d'iteration
+						if (Gagner(j,k,joueur)==true) {
+							gagner = true;
+						}
+
+						
 						//Cas le jeu a etait fait correctement et joueur est 1
 						if (bonnePosition == true && joueur == 1)
 						{
@@ -228,13 +234,22 @@ namespace Morpion
 						}
 					
 						
-						//Test si joueur gagnant début d'iteration
-						if (Gagner(j,k,joueur)==true) {
-							gagner = true;
-						}
-
+						
 					};
-					
+					 // Fin de la partie
+            	//Cas égalité car la boucle c'est arreter et gagner est toujours a false
+            	if (gagner == false)
+            	{
+            		//Annonce égalité
+            		Console.WriteLine("Egalité");
+            	}
+            
+            	//Cas où la boucle cest arreter car gagner est a true donc quelqun a gagner 
+           		 else
+           	 	{
+            		//Annonce du gagnant
+            		Console.WriteLine("Felicitations le gagnant est : "+ joueur);
+           		}
 					
 					
 			//A completer
