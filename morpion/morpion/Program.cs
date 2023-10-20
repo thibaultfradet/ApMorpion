@@ -176,25 +176,31 @@ namespace Morpion
 					while(!gagner && essais != 9)
 					{
 						
+						
+						
 						//Affichage de la grille
         				AfficherMorpion(j,k);
+        				Console.WriteLine("C'est au tour de joueur" + joueur);
+						
 						
 						
 						try
 						{
+							
 							Console.WriteLine("Ligne   =    ");
 							Console.WriteLine("Colonne =    ");
 							// Peut changer en fonction de comment vous avez fait votre tableau.
-							Console.SetCursorPosition(LigneDébut + 10, ColonneDébut + 9); // Permet de manipuler le curseur dans la fenêtre 
+							Console.SetCursorPosition(LigneDébut + 10, ColonneDébut + 10); // Permet de manipuler le curseur dans la fenêtre 
 							l = int.Parse(Console.ReadLine()) - 1; 
 							// Peut changer en fonction de comment vous avez fait votre tableau.
-							Console.SetCursorPosition(LigneDébut + 10, ColonneDébut + 10); // Permet de manipuler le curseur dans la fenêtre 
+							Console.SetCursorPosition(LigneDébut + 10, ColonneDébut + 11); // Permet de manipuler le curseur dans la fenêtre 
 							c = int.Parse(Console.ReadLine()) - 1;
 							
 							
 							//Mise bonne position(booleen retour fonction) a retour de AJouer
 							bonnePosition = AJouer(l,c,joueur);
-								
+							
+							
 							
 						}
 						
@@ -237,13 +243,11 @@ namespace Morpion
 							Console.Clear();
 						}
 						
-						//Cas mauvais positionnement
-						else if (bonnePosition == false)
+						//Cas mauvais positionnement joueur
+						else
 						{
-							//Clear de la console pour le prochain tour
+							//On clear console pour le prochain tour
 							Console.Clear();
-							//On annonce le mauvais positionnement
-							Console.WriteLine("Mauvais positionnement");
 						}
 						
 						
@@ -260,8 +264,9 @@ namespace Morpion
             	//Cas où la boucle cest arreter car gagner est a true donc quelqun a gagner 
            		 else
            	 	{
+           		 	AfficherMorpion(j,k);
             		//Annonce du gagnant
-            		Console.WriteLine("Felicitations le gagnant est : joueur"+ joueur);
+            		Console.WriteLine("Felicitations le gagnant est : joueur "+ joueur +":");
            		}
 					
 					
