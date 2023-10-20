@@ -36,8 +36,27 @@ namespace Morpion
         // n'est pas déjà jouée
         public static bool AJouer(int j, int k, int joueur)
         {
-            // A compléter 
-            return false;
+           //Si les indices sont en dehors de la limite 
+        	if (j < 0 || j >= 3 || k < 0 || k >= 3)
+        	{
+        		Console.WriteLine("Mauvaise positionnement");
+        		//On retourne false ,sortie de fonction
+        		return false;
+        	}
+        	
+        	
+        	//Cas endroit libre
+        	if (grille[j,k] != 1 && grille[j,k] !=2)
+        	{
+        		//Mise de la grille a l'emplacement voulu a joueur
+        		grille[j,k] = joueur;
+        		
+        		//On retourne true le joueur a jouer ,sortie de fonction
+        		return true;
+        	}
+        	
+        	//La fonction n'a rien pas etait quitter on a rien retourner donc l'emplacement est deja prie on retourne false
+        	return false;
         }
 
         // Fonction permettant de vérifier
