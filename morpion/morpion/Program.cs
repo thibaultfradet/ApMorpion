@@ -178,9 +178,10 @@ namespace Morpion
 					while(!gagner && essais != 9)
 					{
 						
-						AfficherMorpion(j,k);
+						//Affichage de la grille
+        				AfficherMorpion(j,k);
 						
-						// A compléter 
+						
 						try
 						{
 							Console.WriteLine("Ligne   =    ");
@@ -192,22 +193,51 @@ namespace Morpion
 							Console.SetCursorPosition(LigneDébut + 10, ColonneDébut + 10); // Permet de manipuler le curseur dans la fenêtre 
 							c = int.Parse(Console.ReadLine()) - 1;
 
-							// A compléter 
-
+							
+							//Mise bonne position(booleen retour fonction) a retour de AJouer
+							bonnePosition = AJouer(l,c,joueur);
+								
+							
 						}
+						
+						
 						catch (Exception e)
 						{
 							Console.WriteLine(e.ToString());
 						}
+						
+						
+						//Cas le jeu a etait fait correctement et joueur est 1
+						if (bonnePosition == true && joueur == 1)
+						{
+							//Incremente nb essaie car tour est bon
+							essais +=1;
+							
+							//On change de joueur a 2
+							joueur = 2;
+						}
+						
+						//Cas la jeu a etait fait correctement et joueur est 2
+						else if (bonnePosition == true && joueur == 2)
+						{
+							//Incremente nb essaie car tour est bon
+							essais +=1;
+							
+							//On change de joueur a 1
+							joueur = 1;
+						}
+					
+						
+						//Test si joueur gagnant début d'iteration
+						if (Gagner(j,k,joueur)==true) {
+							gagner = true;
+						}
 
-						// Changement de joueur
-						// A compléter 
-
-					}; // Fin TQ
-
-            // Fin de la partie
-            // A compléter 
-
+					};
+					
+					
+					
+			//A completer
             Console.ReadKey();
     }
   }
