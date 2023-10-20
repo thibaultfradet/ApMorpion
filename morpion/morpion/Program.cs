@@ -20,8 +20,22 @@ namespace Morpion
 				Console.Write("|");
 			  	for (k = 0; k < grille.GetLength(1); k++)	
 			  	{
-			    	Console.Write(" -- ");
-			    	Console.Write("|");
+			    	if (grille[j,k] == 10)
+			  		{
+			    		Console.Write(" - ");
+			    		Console.Write("|");
+			  		}
+			  		
+			  		else if (grille[j,k] == 1)
+			  		{
+			  			Console.Write(" X ");
+			  			Console.Write("|");
+			  		}
+			  		else
+			  		{
+			  			Console.Write(" O ");
+			  			Console.Write("|");
+			  		}
 			    }
 			}
 			Console.Write("\n|====|====|====|====|");
@@ -63,7 +77,82 @@ namespace Morpion
         // si un joueur à gagner
         public static bool Gagner(int l, int c, int joueur)
         {
-            // A compléter 
+            //Partie Vertical
+           	
+           	
+            //Methode utiliser : chiffre direct 
+            
+            if (grille[0,0] == joueur && grille[1,0] == joueur && grille[2,0] == joueur)
+            {
+            	Console.Clear();
+            	Console.WriteLine("Win vertical");
+            	return true;
+            }
+            
+            if (grille[0,1] == joueur && grille[1,1] == joueur && grille[2,1] == joueur)
+            	
+            {
+            	Console.Clear();
+            	Console.WriteLine("Win vertical");
+            	return true;
+            }
+            
+            if (grille[0,2] == joueur && grille[1,2] == joueur && grille[2,2] == joueur)
+            {
+            	Console.Clear();
+            	Console.WriteLine("Win vertical");
+            	return true;	
+            }
+            
+            
+            
+            //Partie horizontale
+            
+             //Methode utiliser : chiffre direct 
+            
+             if (grille[0,0] == joueur && grille[0,1] == joueur && grille[0,2] == joueur)
+            {
+            	Console.Clear();
+            	Console.WriteLine("Win horizontale");
+            	return true;
+            }
+            
+             if (grille[1,0] == joueur && grille[1,1] == joueur && grille[1,2] == joueur)
+            	
+            {
+            	Console.Clear();
+            	Console.WriteLine("Win vertical");
+            	return true;
+            }
+            
+             if (grille[2,0] == joueur && grille[2,1] == joueur && grille[2,2] == joueur)
+            {
+            	Console.Clear();
+            	Console.WriteLine("Win vertical");
+            	return true;	
+            }
+            
+            //Partie diagonale
+            
+          //Diagonale gauche vers droite
+            //Methode utiliser : parcours (chiffre direct)
+           
+            if (grille[0,0] == joueur && grille[1,1] == joueur && grille [2,2] == joueur)
+            {
+            	Console.WriteLine("Win diagonale");
+            	return true;
+            }
+            	
+           //Diagonale droite vers gauche
+           //Methode utiliser : parcours (chiffre direct)
+			
+           if (grille[2,0] == joueur && grille[1,1] == joueur && grille[0,2] == joueur) {
+           		Console.WriteLine("Win diagonale");
+           		return true;
+			}
+
+           
+            
             return false;
         }
 
